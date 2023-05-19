@@ -341,6 +341,8 @@ static bool mctl_phy_read_calibration(struct dram_para *para)
 	bool result = true;
 	u32 val, tmp;
 
+	udelay(0); // This section is required for higher versions of gcc
+
 	clrsetbits_le32(SUNXI_DRAM_PHY0_BASE + 8, 0x30, 0x20);
 
 	setbits_le32(SUNXI_DRAM_PHY0_BASE + 8, 1);
